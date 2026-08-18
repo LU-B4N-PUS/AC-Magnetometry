@@ -23,7 +23,7 @@ def normalized_filter(omega, T, n_pulses, n_points=20000):
 
 if __name__ == "__main__":
     T = 1.0
-    omega = np.linspace(0.01, 10*np.pi, 1000)
+    omega = np.linspace(0.01, 10*np.pi, 3000)
 
     fig, ax = plt.subplots(figsize=(12, 8))
 
@@ -37,8 +37,9 @@ if __name__ == "__main__":
     ax.set_ylabel("Normalized filter function  F(omega) / T^2", fontsize=15)
     ax.set_title("Frequency sensitivity of each pulse sequence", fontsize=25)
     ax.legend(fontsize=10)
+    ax.grid(True)
     ax.set_yscale("log")
-    ax.set_ylim(1e-4, 20)
+    ax.set_ylim(1e-5, 100)
     fig.tight_layout()
     fig.savefig(
         "/Users/farkasbende/Desktop/UCPH_Master/SCQIS/project_magnetometry/results/filter_func.png", dpi=300)
