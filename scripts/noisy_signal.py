@@ -7,6 +7,12 @@ GAMMA = 1.0
 
 
 def lorentz_psd(omega, noise_amp, tau_c):
+    """ 
+    S(omega) = 2 * noise_amplitude^2 * tau_c / (1 + (omega*tau_c)***2)
+
+    noise_amplitude: magnetic field noise (sets T2*)
+    tau_c: noise correlation time
+    """
     return 2 * noise_amp**2 * tau_c / (1 + (omega*tau_c)**2)
 
 

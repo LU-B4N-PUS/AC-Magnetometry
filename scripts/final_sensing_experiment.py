@@ -8,7 +8,7 @@ from analysis import overlap_amp
 from noisy_signal import GAMMA
 
 
-#   "/Users/farkasbende/Desktop/UCPH_Master/SCQIS/project_magnetometry/data/
+#   "/Desktop/UCPH_Master/SCQIS/project_magnetometry/data/
 
 TARGET = 50.0
 T_SHOT = 1.14794 / TARGET
@@ -16,6 +16,8 @@ READOUT_REPS = 50
 
 
 def run_experiment(n_pulses, df, sample_rate, seed):
+    # Slice the dataset into T_SHOT windows
+
     rng = np.random.default_rng(seed)
     sample_per_shot = int(T_SHOT * sample_rate)
     n_shots = len(df) // sample_per_shot
@@ -37,7 +39,7 @@ def run_experiment(n_pulses, df, sample_rate, seed):
         clicks = rng.binomial(READOUT_REPS, p) / READOUT_REPS
         phi_hat[k] = np.arcsin(np.clip(2*clicks-1, -1, 1))
 
-    # Software lock-in
+    # lock-in
     omega_t = 2 * np.pi * TARGET * shot_times
     design = np.column_stack([np.cos(omega_t), np.sin(omega_t)])
     coeffs, *_ = np.linalg.lstsq(design, phi_hat, rcond=None)

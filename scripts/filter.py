@@ -5,6 +5,17 @@ from pulse_sequences import SEQUENCES
 
 
 def filter_fun(omega, T, n_pulses, n_points=20000):
+    """
+    Compute |chi(omega)|^2 for a sequence of total time
+
+    omega : array_like, frequencies to evaluate
+    T     : total sensing time
+    n_pulses : number of pi pulses
+    n_points : time resolution for the integral
+
+    Returns
+    F : array, same shape as omega
+    """
     t = np.linspace(0, T, n_points)
     y = modulation(t, T, n_pulses)
     omega = np.atleast_1d(np.asarray(omega))
@@ -17,6 +28,8 @@ def filter_fun(omega, T, n_pulses, n_points=20000):
 
 
 def normalized_filter(omega, T, n_pulses, n_points=20000):
+    """for comparing sequences with very different total power."""
+
     F = filter_fun(omega, T, n_pulses, n_points)
     return F / (T ** 2)  # Ramsey dc peak T^2
 

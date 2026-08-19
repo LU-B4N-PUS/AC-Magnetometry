@@ -17,6 +17,7 @@ def lab_dataset(duration=5.0, sample_rate=4000., b_signal=1., seed=RANDOM_SEED):
     other_device = 0.6*b_signal * \
         np.cos(2*np.pi*62*t + rng.uniform(0, 2 * np.pi))
 
+    # lorentzian psd
     TAU_C = 0.4
     dt = 1 / sample_rate
     alpha = np.exp(-dt/TAU_C)

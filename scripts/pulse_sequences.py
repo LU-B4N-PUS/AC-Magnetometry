@@ -3,7 +3,17 @@ import matplotlib.pyplot as plt
 
 
 def modulation(t, T, n_pulses):
+    """
+     t : array_like
+        Time points, 0 <= t <= T
+    T : float
+        Total sensing time
+    n_pulses : int
+        Number of pi-pulses.
 
+    Returns
+    y : array, values in {+1, -1}
+    """
     t = np.asarray(t)
     if n_pulses == 0:
         return np.ones_like(t)
@@ -14,7 +24,7 @@ def modulation(t, T, n_pulses):
 
     y = np.ones_like(t)
     for i in pulse_time:
-        y = np.where(t >= i, -y, y)
+        y = np.where(t >= i, -y, y)  # filps sign each pulse
     return y
 
 

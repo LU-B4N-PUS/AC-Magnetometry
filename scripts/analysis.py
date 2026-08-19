@@ -9,6 +9,8 @@ TAU_C = .3
 
 
 def overlap_amp(T, n_pulses, omega_signal, n_points=4000):
+    # integral y(t) cos(omega_signal t) dt
+
     t = np.linspace(0, T, n_points)
     y = modulation(t, T, n_pulses)
     return np.abs(np.trapezoid(y*np.cos(omega_signal * t), t))
@@ -24,6 +26,8 @@ def sensitivity(T, n_pulses, omega_signal):
 
 
 def seq_per_freq(freqs, T=1.0):
+    # For each signal frequency, find the lowest sensitivity
+
     rows = []
     for f in freqs:
         omega_signal = 2 * np.pi * f
