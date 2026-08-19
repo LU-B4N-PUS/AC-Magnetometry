@@ -1,20 +1,35 @@
 # AC-Magnetometry: Pulse Sequence Comparison (Ramsey vs Hahn Echo vs CPMG)
 
 The purpose of this project is to compare how well different dynamical-decoupling pulse sequences detect an oscillating (AC) magnetic field — the core technique behind real quantum magnetometers used for current sensing, vibration monitoring, and structural health monitoring.
-For more information about the background and results please check [the documentation](docs/SCQIS_Project-1.pdf)
+For more information about the background and results please check [the documentation](docs/SCQIS_Project-1.pdf).
 
+## How to start
 
+After pulling the repo to your computer, you can easily create a virtual environment, where all the script will work by 
+```
+$ conda env create --name YOUR_ENV_NAME --file environment.yml
+```
+Or you can use your virtual environment with the following requirements:
+```
+numpy
+scipy
+pandas
+matplotlib
+qutip   # optional, only needed for qutip_verification.py
+```
 
 
 ## Files (in recommended order)
 
-| Day | File | What it does |
-|---|---|---|
-| 1 | `pulse_sequences.py` | Defines the modulation function y(t) for Ramsey/Hahn/CPMG-N. Run it to sanity-check the pulse timing (`modulation_functions.png`). |
-| 2 | `filter.py` | Computes each sequence's frequency-domain filter function via a numerical Fourier integral. Produces `filter_func.png` — the key result showing each sequence's resonance peak. |
-| 3 | `noisy_signal.py` | Adds a realistic Lorentzian noise spectrum (finite correlation time) and computes (a) coherence decay under that noise and (b) the deterministic phase response to an AC signal. Produces `coherence_decay.png`. |
-| 3-4 | `analysis.py` | Combines signal response + noise-limited coherence into a sensitivity metric, sweeps signal frequency, and reports (via pandas) which sequence is optimal at each frequency. Produces `sensitivity_comparison.png` and `sensitivity_results.csv`. |
-| optional | `qutip.ipynb` | Independent check using QuTiP's master-equation solver instead of the filter-function shortcut. |
+| File | What it does |
+|---|---|
+| `pulse_sequences.py` | Defines the modulation function y(t) for Ramsey/Hahn/CPMG-N. Run it to sanity-check the pulse timing (`modulation_functions.png`). |
+| `filter.py` | Computes each sequence's frequency-domain filter function via a numerical Fourier integral. Produces `filter_func.png` — the key result showing each sequence's resonance peak. |
+| `noisy_signal.py` | Adds a realistic Lorentzian noise spectrum (finite correlation time) and computes (a) coherence decay under that noise and (b) the deterministic phase response to an AC signal. Produces `coherence_decay.png`. |
+| `analysis.py` | Combines signal response + noise-limited coherence into a sensitivity metric, sweeps signal frequency, and reports (via pandas) which sequence is optimal at each frequency. Produces `sensitivity_comparison.png` and `sensitivity_results.csv`. |
+| `visualization.ipynb` | Independent check using QuTiP's master-equation solver instead of the filter-function shortcut. |
+| `enc_dataset.py` | Creating a syntetic dataset to simulate real life lab noisy environment. |
+| `final_sensing_experiment.py` | Test ssensing program by applying on the `lab_dataset.csv` file  |
 
 ## Possible further development
  
