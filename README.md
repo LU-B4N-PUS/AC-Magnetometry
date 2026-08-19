@@ -15,7 +15,7 @@ numpy
 scipy
 pandas
 matplotlib
-qutip   # optional, only needed for qutip_verification.py
+qutip, ipynb   # optional, only needed for visualization.ipynb
 ```
 
 
