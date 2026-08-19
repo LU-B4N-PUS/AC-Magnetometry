@@ -1,14 +1,9 @@
 # AC-Magnetometry: Pulse Sequence Comparison (Ramsey vs Hahn Echo vs CPMG)
 
 The purpose of this project is to compare how well different dynamical-decoupling pulse sequences detect an oscillating (AC) magnetic field — the core technique behind real quantum magnetometers used for current sensing, vibration monitoring, and structural health monitoring.
+For more information about the background and results please check [the documentation](docs/)
 
-## The physics background
 
-A qubit sensor accumulates phase  
-
-$$ \phi = \gamma * \int y(t) B(t) dt$$ 
-
-during a sensing sequence, where y(t) is a "modulation function" that flips sign at every pi-pulse. Ramsey (no pulses) is a DC-sensitive low-pass filter. Hahn echo (one pulse) and CPMG-N (N pulses) act as increasingly narrow bandpass filters centered near *N/(2T)*. This means the right pulse sequence depends on what frequency we're trying to detect — exactly the "lock-in" logic used in real AC magnetometry (e.g. detecting 50/60 Hz grid current, or a specific vibration frequency in a structural-monitoring application).
 
 
 ## Files (in recommended order)
@@ -25,18 +20,15 @@ during a sensing sequence, where y(t) is a "modulation function" that flips sign
  
 - **Realistic units**: replace the natural units (`GAMMA = 1.0`) with
   NV-center numbers (`gamma_e / 2pi ≈ 28 GHz/T`) and typical T2*/T2
-  values (~1 µs / ~1 ms) to get an actual field sensitivity in T/√Hz —
-  directly comparable to published NV magnetometer specs.
+  values (~1 µs / ~1 ms) to get an actual field sensitivity in T/√Hz
 - **1/f noise**: swap the Lorentzian PSD for a `1/f` power law (more
   realistic for many solid-state qubits) and see how the optimal
   sequence choice changes — this is an open research question in the
   DD literature.
 - **Non-ideal pulses**: replace instantaneous pi-pulses with finite-
-  duration pulses (this is where QuTiP's `mesolve` genuinely earns its
-  keep over the filter-function shortcut, since finite pulse width
+  duration pulses (this is where QuTiP's `mesolve`  over the filter-function shortcut, since finite pulse width
   breaks the simple y(t) picture).
-- **Real target signal**: if you want to tie this back to the
-  structural/grid-monitoring idea directly, replace the single-tone
+- **Real target signal**: replace the single-tone
   AC signal with something like a power-line harmonic spectrum (50 Hz
   + odd harmonics) and ask which CPMG order best isolates the
   fundamental from the harmonics.
