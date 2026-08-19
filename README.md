@@ -43,7 +43,4 @@ qutip   # optional, only needed for qutip_verification.py
 - **Non-ideal pulses**: replace instantaneous pi-pulses with finite-
   duration pulses (this is where QuTiP's `mesolve`  over the filter-function shortcut, since finite pulse width
   breaks the simple y(t) picture).
-- **Real target signal**: replace the single-tone
-  AC signal with something like a power-line harmonic spectrum (50 Hz
-  + odd harmonics) and ask which CPMG order best isolates the
-  fundamental from the harmonics.
+- **Real target signal**: replace the single-tone AC signal with something like a power-line harmonic spectrum (50 Hz + odd harmonics)
