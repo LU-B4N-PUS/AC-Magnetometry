@@ -43,7 +43,7 @@ if __name__ == "__main__":
     ax.set_ylabel(
         "Coherence $|<\sigma_+> (T)>| / |<\sigma_+> (0) |$", fontsize=15)
     ax.set_title(
-        f"Decoherence under Lorentzian noise $\tau_c$ = {tau_c}", fontsize=25)
+        rf"Decoherence under Lorentzian noise $\tau_c$ = {tau_c}", fontsize=25)
     ax.grid(True)
     ax.legend(fontsize=15)
     fig.tight_layout()
