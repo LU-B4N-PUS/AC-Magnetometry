@@ -1,7 +1,7 @@
 # AC-Magnetometry: Pulse Sequence Comparison (Ramsey vs Hahn Echo vs CPMG)
 
 The purpose of this project is to compare how well different dynamical-decoupling pulse sequences detect an oscillating (AC) magnetic field — the core technique behind real quantum magnetometers used for current sensing, vibration monitoring, and structural health monitoring.
-For more information about the background and results please check [the documentation](docs/)
+For more information about the background and results please check [the documentation](docs/SCQIS_Project-1.pdf)
 
 
 
